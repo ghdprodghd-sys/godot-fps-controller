@@ -14,12 +14,6 @@ extends DirectionalLight3D
 # Posição
 var time_of_day: float = 0.0
 
-func _ready() -> void:
-	# Verificar se já existe um Environment
-	if environment == null:
-		var new_env = Environment.new()
-		environment = new_env
-
 func _process(delta: float) -> void:
 	# Atualizar tempo do dia
 	time_of_day += delta / cycle_duration
@@ -77,4 +71,4 @@ func set_time_of_day(new_time: float) -> void:
 # Função para pausar/retomar o ciclo
 func set_cycle_paused(paused: bool) -> void:
 	"""Pausa ou retoma o ciclo dia/noite"""
-	set_physics_process(!paused)
+	set_process(!paused)
